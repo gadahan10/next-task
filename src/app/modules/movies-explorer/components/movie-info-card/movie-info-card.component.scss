@@ -1,0 +1,106 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.movie-card-container {
+    width: 26rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 1.6rem;
+    background: white;
+    padding: 1rem;
+    border-radius: 1rem;
+
+    @media screen and (max-width: 700px) and (min-width: 605px){                   
+        width: 22rem;
+    }
+
+    @media screen and (max-width: 604px) and (min-width: 480px){                   
+        width: 20rem;
+    }
+
+    @media screen and (max-width: 479px) and (min-width: 350px){                   
+        width: min(16rem, 36vw);
+        row-gap: 1rem;
+    }
+
+    .image-wrapper {
+        height: 36rem;
+        width: 100%;
+
+        @media screen and (max-width: 700px) and (min-width: 605px){                   
+            height: 30rem;
+        }
+    
+        @media screen and (max-width: 604px) and (min-width: 480px){                   
+            height: 27rem;
+        }
+    
+        @media screen and (max-width: 479px) and (min-width: 350px){                   
+            height: min(21rem, 48vw);;
+        }
+    
+        .image {
+           width: 100%;
+            transition: .3s;
+    
+            &:hover {
+                opacity: 0.85;
+            }
+        }
+    }
+
+    .title {
+        width: inherit;
+        height: 6.5rem;
+        overflow: hidden;
+
+        @media screen and (max-width: 700px) and (min-width: 375px){                   
+            height: min(6.5rem, 16vw);
+        }
+
+        span {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            -webkit-line-clamp: 2;
+            font-size: min(3rem, 4vw);
+            line-height: 3.1rem;
+            font-family: Georgia;
+            max-height: 6.5rem;
+            width: 100%;
+            white-space: normal;
+        };
+    }
+
+    .rating {
+        display: flex;
+        align-items: center;
+
+        &-star {
+            filter: invert(79%) sepia(30%) saturate(3645%) hue-rotate(359deg) brightness(106%) contrast(106%);
+        }
+
+        &-value {
+            font-size: min(2.5rem, 3vw);
+            line-height: 3rem;
+            font-family: Arial;
+            margin-left: 1rem;
+            height: 2.5rem;
+
+            @media screen and (max-width: 700px) and (min-width: 375px){                   
+                font-size: min(2.5rem, 4.25vw);
+               
+            }
+        }
+    }
+
+    &::ng-deep custom-button{
+        width: 100%;
+    }
+}

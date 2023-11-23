@@ -1,0 +1,13 @@
+<div class="movie-card-container">
+    <div class="image-wrapper">
+        <img [src]="movieData?.image" alt="movie-image" class="image">
+    </div>
+    <div class="title">
+        <span>{{movieData?.title}} ({{movieData?.released}})</span>
+    </div>
+    <div class="rating">
+        <img src="assets/icons/star.svg" alt="star" class="rating-star">
+        <span class="rating-value">{{movieData?.rating || 'NA'}} </span>
+    </div>
+    <custom-button [label]="'Read more'" (onClick)="onReadMoreClick()"></custom-button>
+</div>

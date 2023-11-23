@@ -1,0 +1,30 @@
+<div class="movies-explorer-container">
+    <div class="title">
+        EXPLORE YOU NEXT<br>MOVIES AND TV SHOWS
+    </div>
+    <ng-container *ngIf="{ data: moviesData$ | async} as moviesData;">
+        <div class="filters">
+            <div class="left">
+                <mat-paginator #paginator [length]="moviesData?.data?.total" [pageSizeOptions]="[10, 20, 50]" aria-label="Select page">
+                </mat-paginator>
+                </div>
+            <div class="right">
+                <div class="search">
+                    <input type="text" placeholder="Search movie..." #searchInput [(ngModel)]="filtersDto.freeSearch">
+                    <img src="assets/icons/search.svg" alt="search">
+                </div>
+            </div>
+        </div>
+        <ng-container *ngIf="moviesData?.data?.results?.length; else noResults">
+            <div class="movies-cards">
+                <movie-info-card *ngFor="let movieData of moviesData?.data?.results" [movieData]="movieData"></movie-info-card>
+            </div> 
+        </ng-container>
+    </ng-container>
+</div>
+<ng-template #noResults>
+    <div class="no-results-container">
+        <img class="empty-icon" src="assets/icons/empty.svg" alt="no-results">
+        <span class="message">No movies found</span>
+    </div>
+</ng-template>

@@ -1,0 +1,49 @@
+.footer-container {
+    height: 30rem;
+    background-color: var(--color-grey-black-2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 4rem 0;
+
+    .contact-us {
+        display: flex;
+        flex-direction: column;
+        color: var(--color-primary-white);
+        align-items: center;
+        row-gap: 1.6rem;
+
+        .title {
+            font-size: 3.3rem;
+            line-height: 3.7rem;
+            font-family: Georgia;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            row-gap: 1rem;
+            font-size: 1.6rem;
+            line-height: 2.1rem;
+            font-family: Georgia;
+        }
+    }
+
+    .social-links {
+        display: flex;
+        
+        img.social-link {
+            padding: 0 2rem;
+            cursor: pointer;
+            transition: .3s;
+
+            &:hover {
+                filter: invert(30%) sepia(69%) saturate(342%) hue-rotate(156deg) brightness(113%) contrast(101%)
+            }
+        }
+
+        
+    }
+}
