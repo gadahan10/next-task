@@ -13,6 +13,6 @@ export class MoviesService {
     constructor(private httpService: HttpClientService){}
 
     public loadMovies(filtersDto: FiltersDto): Observable<MovieResults> {
-        return this.httpService.get<MovieResults>(`/movies`, undefined,  new HttpParams().set('filtersDto', JSON.stringify(filtersDto)))
+        return this.httpService.get<MovieResults>(`/movies`, new HttpParams().set('filtersDto', JSON.stringify(filtersDto)))
       }
 }

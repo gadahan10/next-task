@@ -10,7 +10,7 @@
             <span class="runtime">{{ movieData?.runtime! | runtime }}</span>
             <div class="rating">
                 <img src="assets/icons/star.svg" alt="star" class="rating-star">
-                <span *ngIf="movieData?.rating; else noRating" class="rating-value">({{movieData?.rating}})/10</span>
+                <span *ngIf="movieData?.rating; else noRating" class="rating-value">{{movieData?.rating}}/10</span>
                 <ng-template #noRating>
                     <span class="rating-value">NA</span>
                 </ng-template>

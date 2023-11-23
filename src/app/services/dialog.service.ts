@@ -12,6 +12,7 @@ export class DialogService {
   constructor(private dialog: MatDialog) {}
 
   openDialog(component: any, config: any, data: any): void {
+    config.disableClose = true;
     this.dialogRef = this.dialog.open(component, config);
     this.dialogRef.componentInstance.data = data;
 

@@ -30,6 +30,18 @@
                 @media screen and (max-width: 780px) and (min-width: 375px){                   
                     justify-content: center;
                 }
+
+                .mat-select-value-text {
+                    color: var(--color-primary-white);
+                }
+
+                .mat-select-arrow {
+                    color: var(--color-primary-white);
+                }
+
+                .mat-form-field-underline {
+                    background-color: var(--color-primary-white);
+                }
             }
         }
 
@@ -57,6 +69,10 @@
                     border: none;
                     font-family: Arial;
                     font-size: 1.4rem;
+
+                    @media screen and (max-width: 780px) and (min-width: 375px){                   
+                        width: 100%;
+                    }
     
                     &:focus {
                         outline: none;

@@ -9,7 +9,6 @@ import { environment } from "src/environments/environment";
 export class HttpClientService {
 
     constructor(private httpClientService: HttpClient){}
-
   
     private get baseUrl(): string {
         return environment.baseUrl;
@@ -19,7 +18,7 @@ export class HttpClientService {
         return `${this.baseUrl}${url}`;
     }
 
-    get<T>(url: string, headers?: HttpHeaders, params?: HttpParams): Observable<T> {
+    get<T>(url: string, params?: HttpParams, headers?: HttpHeaders): Observable<T> {
         return this.httpClientService.get<T>(this.getRequestUrl(url), {headers, params});
     }
 
