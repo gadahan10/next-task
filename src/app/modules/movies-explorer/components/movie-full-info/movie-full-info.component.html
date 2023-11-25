@@ -1,23 +1,28 @@
 <div class="movie-full-info-container">
     <div class="left-content">
         <div class="image-wrapper">
-            <img [src]="movieData?.largeimage" alt="movie-image" class="image">
+            <img src="{{movieData?.largeimage || 'assets/images/no-image.jpg'}}" alt="movie-image" class="image">
         </div>
     </div>
     <div class="right-content" >
         <div class="movie-info">
             <span class="title">{{movieData?.title}}</span>
-            <span class="runtime">{{ movieData?.runtime! | runtime }}</span>
+            
+            <span class="runtime" *ngIf="movieData?.runtime; else noRuntime">{{ movieData?.runtime! | runtime }}</span>
+            <ng-template #noRuntime>
+                <ng-container *ngTemplateOutlet="defaultTemplate!; context: { value: 'Rating' }"></ng-container>
+             </ng-template>
+             
             <div class="rating">
                 <img src="assets/icons/star.svg" alt="star" class="rating-star">
+                
                 <span *ngIf="movieData?.rating; else noRating" class="rating-value">{{movieData?.rating}}/10</span>
                 <ng-template #noRating>
-                    <span class="rating-value">NA</span>
+                   <ng-container *ngTemplateOutlet="defaultTemplate!; context: { value: 'Rating' }"></ng-container>
                 </ng-template>
+
             </div>
-            <p class="synopsis" [innerHtml]="movieData?.synopsis">
-               
-            </p>
+            <p class="synopsis" [innerHtml]="movieData?.synopsis"></p>
         </div>
         <custom-button [label]="'Back to list'" [direction]="'left'" (onClick)="onBackClick()"></custom-button>
     </div>

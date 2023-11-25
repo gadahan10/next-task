@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, TemplateRef } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MovieDto } from 'src/app/models/movie.dto';
 import { DialogService } from 'src/app/services/dialog.service';
@@ -11,10 +11,14 @@ import { DialogService } from 'src/app/services/dialog.service';
 export class MovieFullInfoComponent implements OnInit {
 
   public movieData?: MovieDto;
+  public defaultTemplate?: TemplateRef<any>;
+
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialogService: DialogService) { }
 
   ngOnInit(): void {
-    this.movieData = this.data;
+  
+    this.movieData = this.data.selectedMovie;
+    this.defaultTemplate = this.data.template;
   }
 
   public onBackClick(): void {

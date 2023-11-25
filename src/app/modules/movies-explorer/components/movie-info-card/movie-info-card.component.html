@@ -1,13 +1,16 @@
 <div class="movie-card-container">
     <div class="image-wrapper">
-        <img [src]="movieData?.image" alt="movie-image" class="image">
+        <img src="{{movieData?.image || 'assets/images/no-image.jpg'}}" alt="movie-image" class="image">
     </div>
     <div class="title">
-        <span>{{movieData?.title}} ({{movieData?.released}})</span>
+        <span *ngIf="movieData?.title; else default">{{movieData?.title}} ({{movieData?.released}})</span>
     </div>
     <div class="rating">
         <img src="assets/icons/star.svg" alt="star" class="rating-star">
-        <span class="rating-value">{{movieData?.rating || 'NA'}} </span>
+        <span class="rating-value" *ngIf="movieData?.rating; else default">{{movieData?.rating}} </span>
     </div>
+    <ng-template #default let-variable="variable">
+        <span [ngStyle]="{'font-size': ' min(2.5rem, 3vw)'}">{{ variable ? 'Unknown ' + variable : 'Unknown' }}</span>
+    </ng-template>
     <custom-button [label]="'Read more'" (onClick)="onReadMoreClick()"></custom-button>
 </div>

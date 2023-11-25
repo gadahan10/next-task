@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, HostListener, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, Input, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { MovieDto } from 'src/app/models/movie.dto';
 import { DialogService } from 'src/app/services/dialog.service';
 import { MovieFullInfoComponent } from '../movie-full-info/movie-full-info.component';
@@ -12,6 +12,7 @@ import { MovieFullInfoComponent } from '../movie-full-info/movie-full-info.compo
 export class MovieInfoCardComponent  {
 
   @Input() movieData?: MovieDto;
+  @ViewChild('default') defaultTemplate?: TemplateRef<any>;
 
   constructor(private dialogService: DialogService) { }
 
@@ -19,6 +20,6 @@ export class MovieInfoCardComponent  {
     this.dialogService.openDialog(MovieFullInfoComponent, {
       width: window.innerWidth > 700 ? '70%' : '90%',
       maxWidth: '80vw'
-    }, this.movieData)
+    }, {selectedMovie: this.movieData, template: this.defaultTemplate})
   }  
 }
